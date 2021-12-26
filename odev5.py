@@ -32,28 +32,26 @@ class Person:
     def set_age(self, str_date):
         birthday = datetime.fromisoformat(str_date.strip())
         today = date.today()
-        """bu satirlari silip yerine 
-        dateutil.relativedelta() fonksiyonunu kullanarak
-        kisinin yasini hesaplayan kodu yaziniz"""
+        
+        self.age = relativedelta(today, birthday).years
 
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
 
 def read_file(file_name):
-    """bu satirlari silip yerine 
-    readlines() fonksiyonunu kullanarak
-    file_name ile adi verilen 
-    dosyayi okuyan ve okudugu satirlari lines icerisine atan kodu yaziniz"""
+    def read_file(file_name):
+    with open(file_name, "u") as f:
+        lines = f.readlines()
+        print(lines)
+    
     return lines
 
 
 def write_file(file_name, content):
-    """bu satirlari silip yerine 
-    write() fonksiyonunu kullanarak
-    file_name ile adi verilen 
-    content ile icerigi verilen 
-    dosyayi yazan kodu yaziniz"""
+    def write_file(file_name, content):
+    with open(file_name, "a") as f:
+        f.write(content)
 
 
 def fill_person(lines):
